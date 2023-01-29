@@ -8,9 +8,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
 public class ItemReaderModifier implements ItemModifier {
@@ -25,32 +23,8 @@ public class ItemReaderModifier implements ItemModifier {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null)
             return itemStack;
-        PlayerInventory inv = player.getInventory();
-        try {
-            EquipmentSlot parsed = EquipmentSlot.valueOf(replace.toUpperCase(Locale.ROOT));
-            return switch (parsed) {
-                // held items could be AIR (not null)
-                case HAND ->
-                    Optional.of(inv.getItemInMainHand()).map(i -> i.getType().isAir() ? itemStack : i.clone()).orElse(itemStack);
-                case OFF_HAND ->
-                    Optional.of(inv.getItemInOffHand()).map(i -> i.getType().isAir() ? itemStack : i.clone()).orElse(itemStack);
-
-                // armor items could be null
-                case HEAD -> Optional.ofNullable(inv.getHelmet()).map(ItemStack::clone).orElse(itemStack);
-                case CHEST -> Optional.ofNullable(inv.getChestplate()).map(ItemStack::clone).orElse(itemStack);
-                case LEGS -> Optional.ofNullable(inv.getLeggings()).map(ItemStack::clone).orElse(itemStack);
-                case FEET -> Optional.ofNullable(inv.getBoots()).map(ItemStack::clone).orElse(itemStack);
-            };
-        } catch (IllegalArgumentException e) { // not a valid equipment slot string - fallback to item slot index
-            try {
-                int slotIdx = Integer.parseInt(replace);
-                return Optional.ofNullable(inv.getItem(slotIdx))
-                    .map(ItemStack::clone)
-                    .orElse(itemStack);
-            } catch (NumberFormatException ignored) {
-                return itemStack;
-            }
-        }
+        PlayerInventory inventory = player.getInventory();
+        return InventoryUtils.getItemInSlot(inventory, replace, itemStack);
     }
 
     @Override public Object toObject() {
