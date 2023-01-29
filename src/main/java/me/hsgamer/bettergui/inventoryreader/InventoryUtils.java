@@ -24,22 +24,17 @@ public class InventoryUtils {
     public static @Nullable ItemStack getItemInSlot(@NotNull PlayerInventory inv, @NotNull String slot, @Nullable ItemStack fallback) {
         try {
             EquipmentSlot parsed = EquipmentSlot.valueOf(slot.toUpperCase(Locale.ROOT));
-            return switch (parsed) {
+            ItemStack itemInSlot = switch (parsed) {
                 // held items could be AIR (not null)
-                case HAND -> Optional.of(inv.getItemInMainHand())
-                    .map(i -> i.getType().isAir() ? fallback : i.clone()).orElse(fallback);
-                case OFF_HAND -> Optional.of(inv.getItemInOffHand())
-                    .map(i -> i.getType().isAir() ? fallback : i.clone()).orElse(fallback);
+                case HAND -> inv.getItemInMainHand();
+                case OFF_HAND -> inv.getItemInOffHand();
                 // armor items could be null
-                case HEAD -> Optional.ofNullable(inv.getHelmet())
-                    .map(ItemStack::clone).orElse(fallback);
-                case CHEST -> Optional.ofNullable(inv.getChestplate())
-                    .map(ItemStack::clone).orElse(fallback);
-                case LEGS -> Optional.ofNullable(inv.getLeggings())
-                    .map(ItemStack::clone).orElse(fallback);
-                case FEET -> Optional.ofNullable(inv.getBoots())
-                    .map(ItemStack::clone).orElse(fallback);
+                case HEAD -> inv.getHelmet();
+                case CHEST -> inv.getChestplate();
+                case LEGS -> inv.getLeggings();
+                case FEET -> inv.getBoots();
             };
+            return (itemInSlot == null || itemInSlot.getType().isAir()) ? fallback : itemInSlot.clone();
         } catch (IllegalArgumentException e) { // not a valid equipment slot string - fallback to item slot index
             try {
                 int slotIdx = Integer.parseInt(slot);
