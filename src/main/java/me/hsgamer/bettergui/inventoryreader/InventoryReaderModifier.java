@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.itemreader;
+package me.hsgamer.bettergui.inventoryreader;
 
 import me.hsgamer.hscore.bukkit.item.ItemModifier;
 import me.hsgamer.hscore.common.interfaces.StringReplacer;
@@ -11,7 +11,7 @@ import org.bukkit.inventory.PlayerInventory;
 import java.util.Map;
 import java.util.UUID;
 
-public class ItemReaderModifier implements ItemModifier {
+public class InventoryReaderModifier implements ItemModifier {
     private String slot = EquipmentSlot.HAND.name();
 
     @Override public String getName() {

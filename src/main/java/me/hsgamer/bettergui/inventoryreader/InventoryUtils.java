@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.itemreader;
+package me.hsgamer.bettergui.inventoryreader;
 
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;

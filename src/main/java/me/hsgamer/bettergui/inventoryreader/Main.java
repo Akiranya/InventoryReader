@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.itemreader;
+package me.hsgamer.bettergui.inventoryreader;
 
 import me.hsgamer.bettergui.builder.ItemModifierBuilder;
 import me.hsgamer.hscore.bukkit.addon.PluginAddon;
@@ -19,6 +19,6 @@ public final class Main extends PluginAddon {
             ItemStack itemInSlot = InventoryUtils.getItemInSlot(inventory, original, null);
             return itemInSlot == null ? "AIR" : itemInSlot.getType().name();
         });
-        ItemModifierBuilder.INSTANCE.register(ItemReaderModifier::new, "read-player-inventory", "read-inv", "read");
+        ItemModifierBuilder.INSTANCE.register(InventoryReaderModifier::new, "read-player-inventory", "read-inv", "read");
     }
 }
