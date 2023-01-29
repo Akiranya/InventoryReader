@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class InventoryUtils {
     /**
-     * Gets the item in given slot.
+     * Gets the item in the specific slot.
      * <p>
      * The param slot accepts both {@link EquipmentSlot} name and slot index.
      *
