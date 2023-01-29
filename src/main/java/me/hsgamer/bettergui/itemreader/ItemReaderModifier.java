@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.exampleaddon;
+package me.hsgamer.bettergui.itemreader;
 
 import me.hsgamer.hscore.bukkit.item.ItemModifier;
 import me.hsgamer.hscore.common.interfaces.StringReplacer;
