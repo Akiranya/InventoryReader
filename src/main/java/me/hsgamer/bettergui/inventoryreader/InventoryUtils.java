@@ -9,7 +9,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Locale;
 import java.util.Optional;
 
-public class InventoryUtils {
+public final class InventoryUtils {
+
+    private InventoryUtils() {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * Gets the item in the specific slot.
      * <p>
