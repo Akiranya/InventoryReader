@@ -1,5 +1,6 @@
 package me.hsgamer.bettergui.inventoryreader;
 
+import cc.mewcraft.mewcore.util.UtilInventory;
 import me.hsgamer.hscore.bukkit.item.ItemModifier;
 import me.hsgamer.hscore.common.interfaces.StringReplacer;
 import org.bukkit.Bukkit;
@@ -24,7 +25,7 @@ public class InventoryReaderModifier implements ItemModifier {
         if (player == null)
             return itemStack;
         PlayerInventory inventory = player.getInventory();
-        return InventoryUtils.getItemInSlot(inventory, replace, itemStack);
+        return UtilInventory.getItemInSlot(inventory, replace, itemStack);
     }
 
     @Override public Object toObject() {
