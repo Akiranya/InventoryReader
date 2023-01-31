@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Optional;
 
 public class InventoryStringReplacer {
-    protected static final StringReplacer READINV = ((original, uuid) -> {
+    protected static final StringReplacer READINV = (original, uuid) -> {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) {
             return null;
@@ -35,5 +35,5 @@ public class InventoryStringReplacer {
                 .orElse("");
         }
         return "";
-    });
+    };
 }
