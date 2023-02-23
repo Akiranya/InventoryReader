@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.inventoryreader;
+package me.hsgamer.bettergui.inventoryreader.replacer;
 
 import cc.mewcraft.mewcore.util.UtilComponent;
 import cc.mewcraft.mewcore.util.UtilInventory;
@@ -11,9 +11,23 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Optional;
+import java.util.UUID;
 
-public class InventoryStringReplacer {
-    protected static final StringReplacer READINV = (original, uuid) -> {
+/**
+ * Usage:
+ * <ol>
+ *     <li>{read_type_(slot)}</li> (returns Material enum name)
+ *     <li>{read_name_(slot)}</li> (returns MiniMessage string)
+ * </ol>
+ * <p>
+ * Examples:
+ * <ol>
+ *     <li>{read_type_hand}</li> (reads the type of item in hand)
+ *     <li>{read_name_head}</li> (reads the name of item in head)
+ * </ol>
+ */
+public class ReadInventoryReplacer implements StringReplacer {
+    @Override public String replace(final String original, final UUID uuid) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) {
             return null;
@@ -35,5 +49,5 @@ public class InventoryStringReplacer {
                 .orElse("");
         }
         return "";
-    };
+    }
 }

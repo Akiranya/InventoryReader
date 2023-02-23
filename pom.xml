@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>InventoryReader</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>InventoryReader</name>
@@ -43,8 +43,15 @@
     <dependency>
       <groupId>cc.mewcraft</groupId>
       <artifactId>MewCore</artifactId>
-      <version>5.12</version>
+      <version>5.13.1</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>beer.dev.cosmetics</groupId>
+      <artifactId>CosmeticsCore</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/libs/CosmeticsCore_1.0.7.jar</systemPath>
     </dependency>
   </dependencies>
 </project>
