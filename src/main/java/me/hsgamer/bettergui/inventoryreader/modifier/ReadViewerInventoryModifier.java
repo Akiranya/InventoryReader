@@ -9,7 +9,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,7 +16,7 @@ import java.util.UUID;
  * Reads the item in current viewer's inventory and sets it as button item.
  */
 public class ReadViewerInventoryModifier implements ItemModifier {
-    private String slot = EquipmentSlot.HAND.name().toLowerCase(Locale.ROOT);
+    private String slot = EquipmentSlot.HAND.name();
 
     @Override public String getName() {
         return "read-viewer-inventory";

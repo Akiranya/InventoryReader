@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ import java.util.UUID;
  * The same as {@link ReadViewerInventoryModifier} but it reads the target player's inventory (if it's online).
  */
 public class ReadTargetInventoryModifier implements ItemModifier {
-    private String slot = EquipmentSlot.HAND.name().toLowerCase(Locale.ROOT);
+    private String slot = EquipmentSlot.HAND.name();
 
     @Override public String getName() {
         return "read-target-inventory";
