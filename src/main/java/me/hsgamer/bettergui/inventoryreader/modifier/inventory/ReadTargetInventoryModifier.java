@@ -22,7 +22,7 @@ public class ReadTargetInventoryModifier extends ReadInventoryModifier {
         String replace = StringReplacer.replace(this.slot, uuid, map.values());
         String[] parts = replace.split(";", 2);
         if (parts.length != 2)
-            return itemStack; // the option format must be: {player_name}:{slot_name}
+            return itemStack; // the option format must be: {slot_name}:{player_name}
         String slotName = parts[0];
         String targetName = parts[1];
         Player targetPlayer = Bukkit.getPlayer(targetName);
